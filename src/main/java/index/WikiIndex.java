@@ -8,6 +8,7 @@ import java.util.Map;
 public class WikiIndex {
 
     private final String projectPath;
+    private final FileNode filesTree;
 
     WikiIndexBuilder indexBuilder;
 
@@ -15,9 +16,12 @@ public class WikiIndex {
         this.projectPath = projectPath;
 
         indexBuilder = new WikiIndexBuilder(projectPath);
-        FileNode filesTree = indexBuilder.build();
+        filesTree = indexBuilder.build();
 
         //printTree(0, filesTree);
+    }
+
+    public void buildIndexPages() {
 
         String tree = makeTree(0, filesTree);
         String sidebar = makeSidebar(0, filesTree);
